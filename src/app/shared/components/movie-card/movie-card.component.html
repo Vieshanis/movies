@@ -1,0 +1,18 @@
+<div class="movie-card">
+  <div class="movie-header" [ngStyle]="{backgroundImage: url}">
+  </div>
+
+  <div class="movie-content">
+    <div class="movie-content-header">
+      <a href="#">
+        <h3 class="movie-title">{{ movie?.title }}</h3>
+      </a>
+    </div>
+    <div class="movie-info">
+      <div class="info-section text-truncate">
+        <label>Description</label>
+        <span>{{ movie?.overview }}</span>
+      </div>
+    </div>
+  </div>
+</div>

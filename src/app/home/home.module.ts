@@ -3,10 +3,14 @@ import { CommonModule } from '@angular/common';
 
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
+import { MovieCardComponent } from '../shared/components/movie-card/movie-card.component';
 
 
 @NgModule({
-  declarations: [HomeComponent],
+  declarations: [
+    HomeComponent,
+    MovieCardComponent
+  ],
   imports: [
     CommonModule,
     HomeRoutingModule

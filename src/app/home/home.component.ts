@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HomeService } from './home.service';
-import { take } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { Movie } from '../shared/models/movie.model';
 
 @Component({
   selector: 'app-home',
@@ -9,14 +11,18 @@ import { take } from 'rxjs/operators';
 })
 export class HomeComponent implements OnInit {
 
+  public popularMovies$: Observable<Movie[]>;
+
   constructor(
     private homeService: HomeService
   ) { }
 
   ngOnInit(): void {
-    this.homeService.get()
-      .pipe(take(1))
-      .subscribe(res => console.log(res))
+    this.popularMovies$ = this.homeService.get()
+      .pipe(
+        take(1),
+        map(res => res.results)
+      );
   }
 
 }
