@@ -1,0 +1,27 @@
+.back-drop {
+  height: 450px;
+  width: 800px;
+  background-size: 800px;
+}
+
+.text-box {
+  padding: 15px 50px 0 50px;
+}
+
+.text-end {
+  text-align: end;
+}
+
+@media screen and (max-width: 800px) {
+  .back-drop {
+    width: 95%;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    height: 0;
+    padding-top: 52%;
+  }
+
+  .text-box {
+    padding: 15px 25px 0 25px;
+  }
+}

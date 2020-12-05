@@ -1,1 +1,48 @@
-<p>movie works!</p>
+<div *ngIf="movie$ | async as movie" class="container-xl">
+  <div class="row justify-content-center">
+    <div class="back-drop" [ngStyle]="{backgroundImage: 'url(' + imageUrl + movie?.backdrop_path + ')'}">
+    </div>
+  </div>
+  <div class="row justify-content-center text-box">
+    <h1>
+      {{ movie?.title }}
+    </h1>
+  </div>
+  <div class="row justify-content-center text-box">
+    <b>
+      {{ movie?.overview }}
+    </b>
+  </div>
+  <div class="row text-box">
+    <div class="col-md-4 p-0">
+      <div class="row justify-content-center">
+        <div class="col-6 p-0 text-end">
+          <b>Runtime:&nbsp;</b>
+        </div>
+        <div class="col-6 p-0">
+          <span>{{ movie?.runtime }} min</span>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 p-0">
+      <div class="row justify-content-center">
+        <div class="col-6 p-0 text-end">
+          <b>Release date:&nbsp;</b>
+        </div>
+        <div class="col-6 p-0">
+          <span>{{ movie?.release_date | date }}</span>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 p-0">
+      <div class="row justify-content-center">
+        <div class="col-6 p-0 text-end">
+          <b>Average vote:&nbsp;</b>
+        </div>
+        <div class="col-6 p-0">
+          <span>{{ movie?.vote_average }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -16,7 +16,6 @@ export class MovieCardComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log('movie card')
     this.url = `url(${IMAGE_URL}${this.movie.poster_path})`;
   }
 
