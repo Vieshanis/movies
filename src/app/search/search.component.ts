@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { catchError, debounceTime, distinctUntilChanged, filter, switchMap, take } from 'rxjs/operators';
 import { DiscoverDTO } from '../shared/models/movie.model';
 import { SearchService } from './search.service';
 
@@ -24,7 +24,12 @@ export class SearchComponent implements OnInit {
       .pipe(
         debounceTime(300),
         distinctUntilChanged(),
-        switchMap(val => this.searchService.search(val))
+        switchMap(val => this.searchService.search(val)
+          .pipe(
+            take(1),
+            catchError(() => of(null))
+          )
+        )
       );
   }
 

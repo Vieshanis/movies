@@ -8,8 +8,12 @@
   </div>
 
   <div *ngIf="searchResults$ | async as searchResults">
-    <div *ngIf="searchResults?.results as movies">
 
+    <div class="row justify-content-center">
+      <span>Total items: {{ searchResults.total_results }}</span>
+    </div>
+
+    <div *ngIf="searchResults?.results as movies">
       <div class="album py-5 bg-light">
         <div class="container-xl">
           <div class="row justify-content-center">
@@ -20,8 +24,8 @@
           </div>
         </div>
       </div>
-
     </div>
+    
   </div>
 
 </div>
