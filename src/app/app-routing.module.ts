@@ -8,7 +8,7 @@ const routes: Routes = [
       .then(m => m.SearchModule)
   },
   {
-    path: 'movie',
+    path: 'movie/:id',
     loadChildren: () => import('./movie/movie.module')
       .then(m => m.MovieModule)
   },
