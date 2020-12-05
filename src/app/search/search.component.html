@@ -14,7 +14,7 @@
     </div>
 
     <div *ngIf="searchResults?.results as movies">
-      <div class="album py-5 bg-light">
+      <div *ngIf="movies.length" class="album py-5 bg-light">
         <div class="container-xl">
           <div class="row justify-content-center">
             <div *ngFor="let movie of movies">

@@ -13,6 +13,7 @@ export interface Movie {
   video: false
   vote_average: number;
   vote_count: number;
+  back_drop_url?: string;
 }
 
 export interface DiscoverDTO {

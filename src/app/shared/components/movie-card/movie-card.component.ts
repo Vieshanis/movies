@@ -16,7 +16,9 @@ export class MovieCardComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.url = `url(${IMAGE_URL}${this.movie.poster_path})`;
+    this.url = this.movie.poster_path ?
+      `url(${IMAGE_URL}${this.movie.poster_path})` :
+      `url('./assets/img/no-image.png')`;
   }
 
 }

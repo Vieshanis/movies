@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, pipe } from 'rxjs';
-import { switchMap, tap } from 'rxjs/operators';
+import { map, switchMap, tap } from 'rxjs/operators';
 import { BACKDROP_URL, IMAGE_URL } from '../shared/globals';
 import { Movie } from '../shared/models/movie.model';
 import { MovieService } from './movie.service';
@@ -23,8 +23,19 @@ export class MovieComponent implements OnInit {
 
   ngOnInit(): void {
     this.movie$ = this.route.paramMap.pipe(
-      switchMap(params => this.movieService.getMovie(+params.get('id')))
+      switchMap(params => this.movieService.getMovie(+params.get('id'))
+        .pipe(
+          map(movie => ({ ...movie, back_drop_url: this.getMovieBackdropUrl(movie) }))
+        ))
     );
+  }
+
+  private getMovieBackdropUrl(movie: Movie): string {
+    return movie.backdrop_path ?
+      `url(${BACKDROP_URL}${movie.backdrop_path})` :
+      movie.poster_path ?
+        `url(${BACKDROP_URL}${movie.poster_path})` :
+        null;
   }
 
 }
