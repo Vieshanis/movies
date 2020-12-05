@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable, of } from 'rxjs';
-import { catchError, debounceTime, distinctUntilChanged, filter, switchMap, take } from 'rxjs/operators';
+import { catchError, debounceTime, distinctUntilChanged, switchMap, take } from 'rxjs/operators';
 import { DiscoverDTO } from '../shared/models/movie.model';
 import { SearchService } from './search.service';
 
