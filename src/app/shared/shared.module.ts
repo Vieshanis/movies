@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { MovieCardComponent } from './components/movie-card/movie-card.component';
+import { PaginationComponent } from './components/pagination/pagination.component';
 
 @NgModule({
   imports: [
@@ -9,11 +10,13 @@ import { MovieCardComponent } from './components/movie-card/movie-card.component
     RouterModule
   ],
   declarations: [
-    MovieCardComponent
+    MovieCardComponent,
+    PaginationComponent
   ],
   exports: [
     CommonModule,
-    MovieCardComponent
+    MovieCardComponent,
+    PaginationComponent
   ]
 })
 export class SharedModule { }

@@ -13,8 +13,8 @@ export class HomeService {
     private httpClient: HttpClient
   ) { }
 
-  public get(): Observable<DiscoverDTO> {
+  public getMovies(page: number): Observable<DiscoverDTO> {
     return this.httpClient.get<DiscoverDTO>(`${API_URL}discover/movie?language=en-US&
-    sort_by=popularity.desc&include_adult=false&include_video=false&page=1`);
+    sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}`);
   }
 }

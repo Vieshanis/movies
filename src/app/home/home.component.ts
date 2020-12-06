@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { HomeService } from './home.service';
-import { map, take } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { map, startWith, switchMap, take } from 'rxjs/operators';
+import { Observable, pipe, Subject } from 'rxjs';
 import { Movie } from '../shared/models/movie.model';
+import { pid } from 'process';
 
 @Component({
   selector: 'app-home',
@@ -12,17 +13,23 @@ import { Movie } from '../shared/models/movie.model';
 export class HomeComponent implements OnInit {
 
   public popularMovies$: Observable<Movie[]>;
+  public pageChange = new Subject<number>();
 
   constructor(
     private homeService: HomeService
   ) { }
 
   ngOnInit(): void {
-    this.popularMovies$ = this.homeService.get()
+    this.popularMovies$ = this.pageChange
+      .asObservable()
       .pipe(
-        take(1),
-        map(res => res.results)
-      );
+        startWith(1),
+        switchMap(page => this.homeService.getMovies(page)
+          .pipe(
+            take(1),
+            map(res => res.results)
+          ))
+      )
   }
 
 }
