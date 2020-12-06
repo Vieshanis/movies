@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { IMAGE_URL } from '../../globals';
 import { Movie } from '../../models/movie.model';
 import { FavoriteMovieStoreService } from '../../store/favorite-movie-store.service';
@@ -8,12 +9,14 @@ import { FavoriteMovieStoreService } from '../../store/favorite-movie-store.serv
   templateUrl: './movie-card.component.html',
   styleUrls: ['./movie-card.component.scss']
 })
-export class MovieCardComponent implements OnInit {
+export class MovieCardComponent implements OnInit, OnDestroy {
 
   @Input() movie: Movie;
 
   public url = IMAGE_URL;
   public isFavorite = false;
+
+  private subscription = new Subscription();
 
   constructor(
     private favoriteMovieStoreService: FavoriteMovieStoreService
@@ -23,12 +26,18 @@ export class MovieCardComponent implements OnInit {
     this.url = this.movie.poster_path ?
       `url(${IMAGE_URL}${this.movie.poster_path})` :
       `url('./assets/img/no-image.png')`;
-    this.checkIfFavorite();
+    this.subscription.add(
+      this.favoriteMovieStoreService.favortieMovies$
+        .subscribe(() => this.checkIfFavorite())
+    )
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
   public favorite(): void {
     this.favoriteMovieStoreService.favorite(this.movie);
-    this.checkIfFavorite();
   }
 
   private checkIfFavorite(): void {
