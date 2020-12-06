@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { IMAGE_URL } from '../../globals';
 import { Movie } from '../../models/movie.model';
@@ -19,7 +19,8 @@ export class MovieCardComponent implements OnInit, OnDestroy {
   private subscription = new Subscription();
 
   constructor(
-    private favoriteMovieStoreService: FavoriteMovieStoreService
+    private favoriteMovieStoreService: FavoriteMovieStoreService,
+    private changeDetectorRef: ChangeDetectorRef
   ) { }
 
   ngOnInit(): void {
@@ -42,6 +43,7 @@ export class MovieCardComponent implements OnInit, OnDestroy {
 
   private checkIfFavorite(): void {
     this.isFavorite = this.favoriteMovieStoreService.isFavorite(this.movie.id);
+    this.changeDetectorRef.detectChanges();
   }
 
 }

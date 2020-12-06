@@ -5,7 +5,7 @@ import { API_URL } from '../shared/globals';
 import { Movie } from '../shared/models/movie.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'any'
 })
 export class MovieService {
 

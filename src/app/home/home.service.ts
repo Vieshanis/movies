@@ -5,7 +5,7 @@ import { API_URL } from '../shared/globals';
 import { DiscoverDTO } from '../shared/models/movie.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'any'
 })
 export class HomeService {
 
@@ -13,7 +13,7 @@ export class HomeService {
     private httpClient: HttpClient
   ) { }
 
-  public get(): Observable<DiscoverDTO> {
+  public getPopularMovies(): Observable<DiscoverDTO> {
     return this.httpClient.get<DiscoverDTO>(`${API_URL}discover/movie?language=en-US&
     sort_by=popularity.desc&include_adult=false&include_video=false&page=1`);
   }

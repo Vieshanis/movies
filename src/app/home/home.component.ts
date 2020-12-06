@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { HomeService } from './home.service';
 import { map, take } from 'rxjs/operators';
 import { Observable } from 'rxjs';
@@ -8,7 +8,8 @@ import { FavoriteMovieStoreService } from '../shared/store/favorite-movie-store.
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomeComponent implements OnInit {
 
@@ -21,7 +22,7 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.popularMovies$ = this.homeService.get()
+    this.popularMovies$ = this.homeService.getPopularMovies()
       .pipe(
         take(1),
         map(res => res.results)
