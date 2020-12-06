@@ -1,4 +1,4 @@
-<div *ngIf="popularMovies$ | async as movies">
+<!-- <div *ngIf="popularMovies$ | async as movies">
 
   <div class="album py-5 bg-light">
     <div class="container-xl">
@@ -15,4 +15,44 @@
     </div>
   </div>
 
+</div> -->
+
+<div class="container-xl">
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="popular-tab" data-toggle="tab" href="#popular" role="tab" aria-controls="popular"
+        aria-selected="true">Most popular</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="favorites-tab" data-toggle="tab" href="#favorites" role="tab" aria-controls="favorites"
+        aria-selected="false">Favorites</a>
+    </li>
+  </ul>
+  <div class="tab-content" id="myTabContent">
+
+    <div class="tab-pane fade show active" id="popular" role="tabpanel" aria-labelledby="popular-tab">
+
+      <div *ngIf="popularMovies$ | async as movies">
+        <div class="row m-3 justify-content-center">
+          <h3>Most popular movies</h3>
+        </div>
+        <div class="album py-5 bg-light">
+          <div class="row justify-content-center">
+            <div *ngFor="let movie of movies">
+              <app-movie-card [movie]="movie">
+              </app-movie-card>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="tab-pane fade" id="favorites" role="tabpanel" aria-labelledby="favorites-tab">
+      <div class="row m-3 justify-content-center">
+        <h3>My favorite movies</h3>
+      </div>
+    </div>
+
+  </div>
 </div>
