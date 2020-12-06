@@ -21,7 +21,7 @@ export class PaginationComponent implements OnChanges {
   public pager = {
     pages: Array(this.totalPages).fill(0).map((x, i) => i + 1),
     currentPage: 1
-  }
+  };
 
   constructor() { }
 

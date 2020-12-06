@@ -27,10 +27,11 @@ export class MovieCardComponent implements OnInit, OnDestroy {
     this.url = this.movie.poster_path ?
       `url(${IMAGE_URL}${this.movie.poster_path})` :
       `url('./assets/img/no-image.png')`;
+
     this.subscription.add(
       this.favoriteMovieStoreService.favoriteMovies$
         .subscribe(() => this.checkIfFavorite())
-    )
+    );
   }
 
   ngOnDestroy(): void {

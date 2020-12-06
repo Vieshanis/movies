@@ -39,5 +39,5 @@ describe('MovieCardComponent', () => {
     spyOn(component['subscription'], 'unsubscribe');
     component.ngOnDestroy();
     expect(component['subscription'].unsubscribe).toHaveBeenCalled();
-  })
+  });
 });

@@ -52,19 +52,17 @@ describe('MovieComponent', () => {
   it('should call getMovieBackdropUrlSpy after movieService.getMovie emits value', done => {
     const getMovieBackdropUrlSpy = spyOn<any>(component, 'getMovieBackdropUrl');
     component.movie$.subscribe(() => {
-
       expect(getMovieBackdropUrlSpy).toHaveBeenCalledOnceWith(testData);
       done();
-    })
+    });
   });
 
   it('should call isFavoriteSpy after movieService.getMovie emits value', done => {
     spyOn(component['favoriteMovieStoreService'], 'isFavorite');
     component.movie$.subscribe(() => {
-
       expect(component['favoriteMovieStoreService'].isFavorite).toHaveBeenCalledOnceWith(1103);
       done();
-    })
+    });
   });
 
   it('should call favoriteSpy after favorite() was called', () => {

@@ -45,8 +45,8 @@ export class SearchComponent implements OnInit {
       .asObservable()
       .pipe(
         debounceTime(200),
-        map(page => ({ search: this.search.value, page: page }))
-      )
+        map(page => ({ search: this.search.value, page }))
+      );
 
     this.searchResults$ = merge(
       search$,
