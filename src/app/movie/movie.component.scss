@@ -16,6 +16,18 @@
   text-align: end;
 }
 
+.heart-icon {
+  display: block;
+  height: 24px;
+  width: 24px;
+  background-image: url('../../assets/icon/heart.svg');
+  background-size: 24px 24px;
+}
+
+.favorite {
+  background-image: url('../../assets/icon/heart-fill.svg');
+}
+
 @media screen and (max-width: 800px) {
   .back-drop {
     width: 95%;

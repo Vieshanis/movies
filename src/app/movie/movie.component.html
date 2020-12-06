@@ -45,4 +45,9 @@
       </div>
     </div>
   </div>
+  <div class="row justify-content-center mt-3">
+    <button type="button" class="btn btn-light" (click)="favorite(movie)">
+      <span class="heart-icon" [ngClass]="{'favorite': movie?.is_favorite}"></span>
+    </button>
+  </div>
 </div>

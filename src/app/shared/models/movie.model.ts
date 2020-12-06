@@ -14,6 +14,7 @@ export interface Movie {
   vote_average: number;
   vote_count: number;
   back_drop_url?: string;
+  is_favorite?: boolean;
 }
 
 export interface DiscoverDTO {
