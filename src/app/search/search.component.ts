@@ -12,7 +12,8 @@ import {
   distinctUntilChanged,
   map,
   switchMap,
-  take
+  take,
+  tap
 } from 'rxjs/operators';
 import { DiscoverDTO } from '../shared/models/movie.model';
 import { SearchService } from './search.service';
@@ -56,6 +57,7 @@ export class SearchComponent implements OnInit {
         switchMap(val => this.searchService.search(val.search, val.page)
           .pipe(
             take(1),
+            tap(() => window.scroll(0,0)),
             catchError(() => of(null))
           )
         )
