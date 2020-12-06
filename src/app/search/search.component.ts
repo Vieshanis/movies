@@ -43,7 +43,7 @@ export class SearchComponent implements OnInit {
     const page$ = this.pageChange
       .asObservable()
       .pipe(
-        debounceTime(100),
+        debounceTime(200),
         map(page => ({ search: this.search.value, page: page }))
       )
 
