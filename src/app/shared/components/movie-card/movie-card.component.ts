@@ -12,6 +12,7 @@ export class MovieCardComponent implements OnInit {
   @Input() movie: Movie;
 
   public url = IMAGE_URL;
+  public isFavorite = false;
 
   constructor() { }
 
@@ -19,6 +20,10 @@ export class MovieCardComponent implements OnInit {
     this.url = this.movie.poster_path ?
       `url(${IMAGE_URL}${this.movie.poster_path})` :
       `url('./assets/img/no-image.png')`;
+  }
+
+  public favorite(): void {
+    this.isFavorite = !this.isFavorite;
   }
 
 }

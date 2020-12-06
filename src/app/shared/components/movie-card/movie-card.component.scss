@@ -48,3 +48,19 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.movie-link {
+  outline: none;
+}
+
+.heart-icon {
+  display: block;
+  height: 24px;
+  width: 24px;
+  background-image: url('../../../../assets/icon/heart.svg');
+  background-size: 24px 24px;
+}
+
+.favorite {
+  background-image: url('../../../../assets/icon/heart-fill.svg');
+}
