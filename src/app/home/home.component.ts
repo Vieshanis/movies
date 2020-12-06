@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
         take(1),
         map(res => res.results)
       );
-    this.favoriteMovies$ = this.favoriteMovieStoreService.favortieMovies$;
+    this.favoriteMovies$ = this.favoriteMovieStoreService.favoriteMovies$;
   }
 
 }

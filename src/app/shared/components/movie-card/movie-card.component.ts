@@ -28,7 +28,7 @@ export class MovieCardComponent implements OnInit, OnDestroy {
       `url(${IMAGE_URL}${this.movie.poster_path})` :
       `url('./assets/img/no-image.png')`;
     this.subscription.add(
-      this.favoriteMovieStoreService.favortieMovies$
+      this.favoriteMovieStoreService.favoriteMovies$
         .subscribe(() => this.checkIfFavorite())
     )
   }
