@@ -24,6 +24,13 @@
       </div>
     </div>
 
+    <app-pagination
+      *ngIf="searchResults?.total_pages > 1"
+      [totalPages]="searchResults?.total_pages"
+      [page]="searchResults?.page"
+      (changePage)="pageChange.next($event)">
+    </app-pagination>
+
   </div>
 
 </div>

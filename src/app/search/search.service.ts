@@ -13,8 +13,8 @@ export class SearchService {
     private httpClient: HttpClient
   ) { }
 
-  public search(query: string): Observable<DiscoverDTO> {
-    return this.httpClient.get<DiscoverDTO>(`${API_URL}search/movie?language=en-US&query=${query}&page=1`);
+  public search(query: string, page: number): Observable<DiscoverDTO> {
+    return this.httpClient.get<DiscoverDTO>(`${API_URL}search/movie?language=en-US&query=${query}&page=${page}`);
   }
 
 }
