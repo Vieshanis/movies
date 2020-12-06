@@ -14,7 +14,7 @@ import {
 })
 export class PaginationComponent implements OnChanges {
 
-  @Input() totalPages = 10;
+  @Input() totalPages = 1;
   @Input() page = 1;
   @Output() changePage = new EventEmitter<number>();
 
@@ -41,7 +41,6 @@ export class PaginationComponent implements OnChanges {
   }
 
   public setPage(page: number): void {
-    console.log(page, this.totalPages, this.pager.currentPage)
     if (page > 0 && page <= this.totalPages && page !== this.pager.currentPage) {
       this.pager.currentPage = page;
       this.createPages();
